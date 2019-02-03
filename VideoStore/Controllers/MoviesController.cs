@@ -23,20 +23,12 @@ namespace VideoStore.Controllers
         // GET: Movies
         public ViewResult Index()
         {
-            return View();
+            if (User.IsInRole(RoleName.CanManageData))
+                return View("List");
+            return View("ReadOnlyList");
         }
-        public ViewResult New()
-        {
-            var genres = context.MoviesGenres.ToList();
-
-            var viewModel = new MoviesFormViewModel
-            {
-                MoviesGenres = genres
-            };
-
-            return View("MoviesForm", viewModel);
-        }
-
+        
+        [Authorize(Roles = RoleName.CanManageData)]
         public ActionResult MoviesForm()
         {
             var MoviesGenre = context.MoviesGenres.ToList();

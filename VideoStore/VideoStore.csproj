@@ -18,7 +18,7 @@
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort />
+    <IISExpressSSLPort>44321</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -220,6 +220,10 @@
     <Compile Include="Migrations\201901310904463_checkout.Designer.cs">
       <DependentUpon>201901310904463_checkout.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902010900245_Seedusers.cs" />
+    <Compile Include="Migrations\201902010900245_Seedusers.Designer.cs">
+      <DependentUpon>201902010900245_Seedusers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customers.cs" />
@@ -228,6 +232,7 @@
     <Compile Include="Models\Membershiptype.cs" />
     <Compile Include="Models\Movies.cs" />
     <Compile Include="Models\MoviesGenre.cs" />
+    <Compile Include="Models\RoleName.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModel\NewCustomerViewModel.cs" />
@@ -527,10 +532,12 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Movies\Index.cshtml" />
+    <Content Include="Views\Movies\List.cshtml" />
     <Content Include="Views\Customers\CustomerForm.cshtml" />
     <Content Include="Views\Movies\MoviesForm.cshtml" />
-    <Content Include="Views\Customers\Index.cshtml" />
+    <Content Include="Views\Customers\List.cshtml" />
+    <Content Include="Views\Movies\ReadOnlyList.cshtml" />
+    <Content Include="Views\Customers\ReadOnlyList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -561,6 +568,9 @@
     <EmbeddedResource Include="Migrations\201901310904463_checkout.resx">
       <DependentUpon>201901310904463_checkout.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902010900245_Seedusers.resx">
+      <DependentUpon>201902010900245_Seedusers.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -580,7 +590,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>63014</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:63014/</IISUrl>
+          <IISUrl>https://localhost:44321/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

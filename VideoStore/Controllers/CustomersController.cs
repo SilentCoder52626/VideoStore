@@ -21,6 +21,15 @@ namespace VideoStore.Controllers
         {
             context.Dispose();
         }
+        // GET: Customers
+        public ViewResult Index()
+        {
+            if (User.IsInRole(RoleName.CanManageData))
+                return View("List");
+            return View("ReadOnlyList");
+        }
+
+        [Authorize(Roles = RoleName.CanManageData)]
         public ActionResult CustomerForm()
         {
             var membershipType = context.MembershipTypes.ToList();
@@ -69,20 +78,7 @@ namespace VideoStore.Controllers
                 MembershipTypes = context.MembershipTypes.ToList()
             };
             return View("CustomerForm", viewModel);
-        }
-        
-        // GET: Customers
-        public ViewResult Index()
-        {            
-            return View();
-        }
-        public ActionResult Details(int id)
-        {
-            var customer = context.Customers.SingleOrDefault(c => c.Id == id);
-            if (customer == null)
-                return HttpNotFound();
-            return View(customer);
-        }
+        }   
 
     }
 }

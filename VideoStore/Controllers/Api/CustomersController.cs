@@ -40,6 +40,7 @@ namespace VideoStore.Controllers.Api
 
         //Post/Api/customers
         [HttpPost]
+        [Authorize(Roles = RoleName.CanManageData)]
         public IHttpActionResult CreateCustomers(CustomersDto customersDto)
         {
             if (!ModelState.IsValid)
@@ -55,6 +56,7 @@ namespace VideoStore.Controllers.Api
         }
         //post /api/customers/id
         [HttpPut]
+        [Authorize(Roles = RoleName.CanManageData)]
         public void UpdateCustomers(int id, CustomersDto customersDto)
         {
             if (!ModelState.IsValid)
@@ -68,6 +70,7 @@ namespace VideoStore.Controllers.Api
         }
         //delete /api/customers/id
         [HttpDelete]
+        [Authorize(Roles = RoleName.CanManageData)]
         public void DelteCustomres(int id)
         {
             var CustomerInDb = context.Customers.SingleOrDefault(c => c.Id == id);

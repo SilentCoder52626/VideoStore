@@ -37,6 +37,7 @@ namespace VideoStore.Controllers.Api
         }
         //Post /Api/movies
         [HttpPost]
+        [Authorize(Roles = RoleName.CanManageData)]
         public IHttpActionResult CreateMovies(MoviesDto moviesDto)
         {
             if (!ModelState.IsValid)
@@ -49,6 +50,7 @@ namespace VideoStore.Controllers.Api
         }
         //Update /Api/movies/id
         [HttpPut]
+        [Authorize(Roles = RoleName.CanManageData)]
         public void UpdateMovies(int id, MoviesDto moviesDto)
         {
             if (!ModelState.IsValid)
@@ -62,6 +64,7 @@ namespace VideoStore.Controllers.Api
         }
         //Delete /Api/movies/id
         [HttpDelete]
+        [Authorize(Roles = RoleName.CanManageData)]
         public void DeleteMovies(int id)
         {
             var moviesInDb = context.Movies.SingleOrDefault(m => m.Id == id);
