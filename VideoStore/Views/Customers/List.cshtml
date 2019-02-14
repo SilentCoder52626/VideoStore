@@ -19,6 +19,8 @@
             <tr>
                 <th>Customers</th>
                 <th>Membership Type</th>
+                <th>Number of Movies Taken</th>
+                <th>Details</th>
                 <th>Delete</th>
             </tr>
         </thead>
@@ -45,13 +47,22 @@
                             data: "membershipType.name"
                         },
                         {
+                            data: "numberOfMoviesRented"
+                        },
+                        {
+                            data: "name",
+                            render: function (data, type, customer) {
+                                return "<a href='/customers/details/" + customer.id + "'>" + "Details" + "</a>";
+                            }
+                        },
+                        {
                             data: "id",
                             render: function (data) {
                                 return "<button class='btn-link js-delete' data-customer-id=" + data + ">Delete</button>";
                             }
                         }
                     ]
-                });
+                });              
 
                 $("#customers").on("click",".js-delete", function () {
                     var button = $(this);

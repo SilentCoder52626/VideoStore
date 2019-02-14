@@ -14,6 +14,7 @@
         <tr>
             <th>Movies</th>
             <th>Genre</th>
+            <th>Numbers Available</th>
         </tr>
     </thead>
     <tbody>
@@ -31,11 +32,15 @@
                     },
                     columns: [
                         {
-                            data: "name",
+                            data: "name"
                             
                         },
+                        
                         {
                             data: "moviesGenre.genre"
+                        },
+                        {
+                            data: "numberAvailable"
                         }
                     ]
                 });                

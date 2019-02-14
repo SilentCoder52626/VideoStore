@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using VideoStore.Models;
 using System.Data.Entity;
 using VideoStore.ViewModel;
+using AutoMapper;
 
 namespace VideoStore.Controllers
 {
@@ -78,7 +79,19 @@ namespace VideoStore.Controllers
                 MembershipTypes = context.MembershipTypes.ToList()
             };
             return View("CustomerForm", viewModel);
-        }   
+        }
+        public ActionResult Details(int id)
+        {
+            var customer = context.Customers.Include(c => c.MembershipType)
+                .Include(c=>c.Rental).Where(c => c.Id == id);
+
+            
+
+            if (customer == null)
+                return HttpNotFound();
+
+            return View(customer);
+        }
 
     }
 }

@@ -20,10 +20,13 @@ namespace VideoStore.Models
         [Required]
         [Range(1,20)]
         public int NumberInStock { get; set; }
-        
+
+        public int NumberAvailable { get; set; } 
+
         public MoviesGenre MoviesGenre { get; set; }
         [Required]
         [Display(Name = "Genre")]
         public byte MoviesGenreId { get; set; }
+        
     }
 }

@@ -17,7 +17,8 @@ namespace VideoStore.Dtos
 
         public bool IsSubscribed { get; set; }
 
-        
+        public int? NumberOfMoviesRented { get; set; }
+
         public byte MembershipTypeId { get; set; }
 
         public MembershipTypeDto MembershipType { get; set; }

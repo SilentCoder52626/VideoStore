@@ -13,9 +13,30 @@ namespace VideoStore.App_Start
         public MappingProfile()
         {
             CreateMap<Movies, MoviesDto>();
+            CreateMap<Customer, CustomersDto>();
+
             CreateMap<MoviesGenre, MoviesGenreDto>();
             CreateMap<MembershipType, MembershipTypeDto>();
-            CreateMap<MoviesGenre, MoviesGenreDto>();
+
+            
+
+            CreateMap<Rental, Customer>();
+            CreateMap<Customer , Rental>();
+
+            CreateMap<Rental, Movies>();
+            CreateMap<Movies, Rental>();
+
+
+            // Dto to Domain
+            CreateMap<CustomersDto, Customer>()
+                .ForMember(c => c.Id, opt => opt.Ignore());
+
+            CreateMap<MoviesDto, Movie>()
+                .ForMember(c => c.Id, opt => opt.Ignore());
+
+            
+
+
         }
     }
 }

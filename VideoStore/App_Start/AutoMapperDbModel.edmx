@@ -1,0 +1,892 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CustomerFormViewModels">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="BirthDate" Type="datetime" Nullable="false" />
+          <Property Name="IsSubscribed" Type="bit" Nullable="false" />
+          <Property Name="MembershipTypeId" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Customers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="BirthDate" Type="datetime" Nullable="false" />
+          <Property Name="IsSubscribed" Type="bit" Nullable="false" />
+          <Property Name="MembershipTypeId" Type="tinyint" Nullable="false" />
+          <Property Name="NumberOfMoviesRented" Type="int" />
+        </EntityType>
+        <EntityType Name="MembershipTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="tinyint" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="SignUpFee" Type="smallint" Nullable="false" />
+          <Property Name="DurationInMonths" Type="tinyint" Nullable="false" />
+          <Property Name="DiscountRate" Type="tinyint" Nullable="false" />
+          <Property Name="CustomerFormViewModel_Id" Type="int" />
+          <Property Name="CustomerFormViewModel_Id1" Type="int" />
+        </EntityType>
+        <EntityType Name="Movies">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateAdded" Type="datetime" Nullable="false" />
+          <Property Name="NumberInStock" Type="int" Nullable="false" />
+          <Property Name="MoviesGenreId" Type="tinyint" Nullable="false" />
+          <Property Name="NumberAvailable" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MoviesFormViewModels">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="NumberInStock" Type="int" Nullable="false" />
+          <Property Name="MoviesGenreId" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MoviesGenres">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="tinyint" Nullable="false" />
+          <Property Name="Genre" Type="nvarchar(max)" />
+          <Property Name="MoviesFormViewModel_Id" Type="int" />
+        </EntityType>
+        <EntityType Name="Rentals">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateRented" Type="datetime" Nullable="false" />
+          <Property Name="DateReturned" Type="datetime" />
+          <Property Name="Customers_Id" Type="int" Nullable="false" />
+          <Property Name="Movies_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_CustomerFormViewModels_dbo_MembershipTypes_MembershipTypeId">
+          <End Role="MembershipTypes" Type="Self.MembershipTypes" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CustomerFormViewModels" Type="Self.CustomerFormViewModels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MembershipTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CustomerFormViewModels">
+              <PropertyRef Name="MembershipTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Customers_dbo_MembershipTypes_MembershipTypeId">
+          <End Role="MembershipTypes" Type="Self.MembershipTypes" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Customers" Type="Self.Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MembershipTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="MembershipTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_MembershipTypes_dbo_CustomerFormViewModels_CustomerFormViewModel_Id1">
+          <End Role="CustomerFormViewModels" Type="Self.CustomerFormViewModels" Multiplicity="0..1" />
+          <End Role="MembershipTypes" Type="Self.MembershipTypes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerFormViewModels">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MembershipTypes">
+              <PropertyRef Name="CustomerFormViewModel_Id1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Movies_dbo_MoviesGenres_MoviesGenreId">
+          <End Role="MoviesGenres" Type="Self.MoviesGenres" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Movies" Type="Self.Movies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MoviesGenres">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Movies">
+              <PropertyRef Name="MoviesGenreId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_MoviesFormViewModels_dbo_MoviesGenres_MoviesGenreId">
+          <End Role="MoviesGenres" Type="Self.MoviesGenres" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MoviesFormViewModels" Type="Self.MoviesFormViewModels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MoviesGenres">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MoviesFormViewModels">
+              <PropertyRef Name="MoviesGenreId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_MoviesGenres_dbo_MoviesFormViewModels_MoviesFormViewModel_Id">
+          <End Role="MoviesFormViewModels" Type="Self.MoviesFormViewModels" Multiplicity="0..1" />
+          <End Role="MoviesGenres" Type="Self.MoviesGenres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MoviesFormViewModels">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MoviesGenres">
+              <PropertyRef Name="MoviesFormViewModel_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Rentals_dbo_Customers_CustomersId_Id">
+          <End Role="Customers" Type="Self.Customers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Rentals" Type="Self.Rentals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Rentals">
+              <PropertyRef Name="Customers_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Rentals_dbo_Movies_MoviesId_Id">
+          <End Role="Movies" Type="Self.Movies" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Rentals" Type="Self.Rentals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Movies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Rentals">
+              <PropertyRef Name="Movies_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomerFormViewModels" EntityType="Self.CustomerFormViewModels" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MembershipTypes" EntityType="Self.MembershipTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Movies" EntityType="Self.Movies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MoviesFormViewModels" EntityType="Self.MoviesFormViewModels" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MoviesGenres" EntityType="Self.MoviesGenres" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rentals" EntityType="Self.Rentals" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_CustomerFormViewModels_dbo_MembershipTypes_MembershipTypeId" Association="Self.FK_dbo_CustomerFormViewModels_dbo_MembershipTypes_MembershipTypeId">
+            <End Role="MembershipTypes" EntitySet="MembershipTypes" />
+            <End Role="CustomerFormViewModels" EntitySet="CustomerFormViewModels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Customers_dbo_MembershipTypes_MembershipTypeId" Association="Self.FK_dbo_Customers_dbo_MembershipTypes_MembershipTypeId">
+            <End Role="MembershipTypes" EntitySet="MembershipTypes" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_MembershipTypes_dbo_CustomerFormViewModels_CustomerFormViewModel_Id1" Association="Self.FK_dbo_MembershipTypes_dbo_CustomerFormViewModels_CustomerFormViewModel_Id1">
+            <End Role="CustomerFormViewModels" EntitySet="CustomerFormViewModels" />
+            <End Role="MembershipTypes" EntitySet="MembershipTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Movies_dbo_MoviesGenres_MoviesGenreId" Association="Self.FK_dbo_Movies_dbo_MoviesGenres_MoviesGenreId">
+            <End Role="MoviesGenres" EntitySet="MoviesGenres" />
+            <End Role="Movies" EntitySet="Movies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_MoviesFormViewModels_dbo_MoviesGenres_MoviesGenreId" Association="Self.FK_dbo_MoviesFormViewModels_dbo_MoviesGenres_MoviesGenreId">
+            <End Role="MoviesGenres" EntitySet="MoviesGenres" />
+            <End Role="MoviesFormViewModels" EntitySet="MoviesFormViewModels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_MoviesGenres_dbo_MoviesFormViewModels_MoviesFormViewModel_Id" Association="Self.FK_dbo_MoviesGenres_dbo_MoviesFormViewModels_MoviesFormViewModel_Id">
+            <End Role="MoviesFormViewModels" EntitySet="MoviesFormViewModels" />
+            <End Role="MoviesGenres" EntitySet="MoviesGenres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Rentals_dbo_Customers_CustomersId_Id" Association="Self.FK_dbo_Rentals_dbo_Customers_CustomersId_Id">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="Rentals" EntitySet="Rentals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Rentals_dbo_Movies_MoviesId_Id" Association="Self.FK_dbo_Rentals_dbo_Movies_MoviesId_Id">
+            <End Role="Movies" EntitySet="Movies" />
+            <End Role="Rentals" EntitySet="Rentals" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogin">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+        </EntityType>
+        <EntityType Name="CustomerFormViewModel">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BirthDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsSubscribed" Type="Boolean" Nullable="false" />
+          <Property Name="MembershipTypeId" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="MembershipType" Relationship="Self.FK_dbo_CustomerFormViewModels_dbo_MembershipTypes_MembershipTypeId" FromRole="CustomerFormViewModels" ToRole="MembershipTypes" />
+          <NavigationProperty Name="MembershipTypes" Relationship="Self.FK_dbo_MembershipTypes_dbo_CustomerFormViewModels_CustomerFormViewModel_Id1" FromRole="CustomerFormViewModels" ToRole="MembershipTypes" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BirthDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsSubscribed" Type="Boolean" Nullable="false" />
+          <Property Name="MembershipTypeId" Type="Byte" Nullable="false" />
+          <Property Name="NumberOfMoviesRented" Type="Int32" />
+          <NavigationProperty Name="MembershipType" Relationship="Self.FK_dbo_Customers_dbo_MembershipTypes_MembershipTypeId" FromRole="Customers" ToRole="MembershipTypes" />
+          <NavigationProperty Name="Rentals" Relationship="Self.FK_dbo_Rentals_dbo_Customers_CustomersId_Id" FromRole="Customers" ToRole="Rentals" />
+        </EntityType>
+        <EntityType Name="MembershipType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Byte" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SignUpFee" Type="Int16" Nullable="false" />
+          <Property Name="DurationInMonths" Type="Byte" Nullable="false" />
+          <Property Name="DiscountRate" Type="Byte" Nullable="false" />
+          <Property Name="CustomerFormViewModel_Id" Type="Int32" />
+          <Property Name="CustomerFormViewModel_Id1" Type="Int32" />
+          <NavigationProperty Name="CustomerFormViewModels" Relationship="Self.FK_dbo_CustomerFormViewModels_dbo_MembershipTypes_MembershipTypeId" FromRole="MembershipTypes" ToRole="CustomerFormViewModels" />
+          <NavigationProperty Name="CustomerFormViewModel" Relationship="Self.FK_dbo_MembershipTypes_dbo_CustomerFormViewModels_CustomerFormViewModel_Id1" FromRole="MembershipTypes" ToRole="CustomerFormViewModels" />
+          <NavigationProperty Name="Customers" Relationship="Self.FK_dbo_Customers_dbo_MembershipTypes_MembershipTypeId" FromRole="MembershipTypes" ToRole="Customers" />
+        </EntityType>
+        <EntityType Name="Movie">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateAdded" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="NumberInStock" Type="Int32" Nullable="false" />
+          <Property Name="MoviesGenreId" Type="Byte" Nullable="false" />
+          <Property Name="NumberAvailable" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="MoviesGenre" Relationship="Self.FK_dbo_Movies_dbo_MoviesGenres_MoviesGenreId" FromRole="Movies" ToRole="MoviesGenres" />
+          <NavigationProperty Name="Rentals" Relationship="Self.FK_dbo_Rentals_dbo_Movies_MoviesId_Id" FromRole="Movies" ToRole="Rentals" />
+        </EntityType>
+        <EntityType Name="MoviesFormViewModel">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="NumberInStock" Type="Int32" Nullable="false" />
+          <Property Name="MoviesGenreId" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="MoviesGenre" Relationship="Self.FK_dbo_MoviesFormViewModels_dbo_MoviesGenres_MoviesGenreId" FromRole="MoviesFormViewModels" ToRole="MoviesGenres" />
+          <NavigationProperty Name="MoviesGenres" Relationship="Self.FK_dbo_MoviesGenres_dbo_MoviesFormViewModels_MoviesFormViewModel_Id" FromRole="MoviesFormViewModels" ToRole="MoviesGenres" />
+        </EntityType>
+        <EntityType Name="MoviesGenre">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Byte" Nullable="false" />
+          <Property Name="Genre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MoviesFormViewModel_Id" Type="Int32" />
+          <NavigationProperty Name="Movies" Relationship="Self.FK_dbo_Movies_dbo_MoviesGenres_MoviesGenreId" FromRole="MoviesGenres" ToRole="Movies" />
+          <NavigationProperty Name="MoviesFormViewModels" Relationship="Self.FK_dbo_MoviesFormViewModels_dbo_MoviesGenres_MoviesGenreId" FromRole="MoviesGenres" ToRole="MoviesFormViewModels" />
+          <NavigationProperty Name="MoviesFormViewModel" Relationship="Self.FK_dbo_MoviesGenres_dbo_MoviesFormViewModels_MoviesFormViewModel_Id" FromRole="MoviesGenres" ToRole="MoviesFormViewModels" />
+        </EntityType>
+        <EntityType Name="Rental">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateRented" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateReturned" Type="DateTime" Precision="3" />
+          <Property Name="Customers_Id" Type="Int32" Nullable="false" />
+          <Property Name="Movies_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK_dbo_Rentals_dbo_Customers_CustomersId_Id" FromRole="Rentals" ToRole="Customers" />
+          <NavigationProperty Name="Movie" Relationship="Self.FK_dbo_Rentals_dbo_Movies_MoviesId_Id" FromRole="Rentals" ToRole="Movies" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_CustomerFormViewModels_dbo_MembershipTypes_MembershipTypeId">
+          <End Role="MembershipTypes" Type="Self.MembershipType" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CustomerFormViewModels" Type="Self.CustomerFormViewModel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MembershipTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CustomerFormViewModels">
+              <PropertyRef Name="MembershipTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_MembershipTypes_dbo_CustomerFormViewModels_CustomerFormViewModel_Id1">
+          <End Role="CustomerFormViewModels" Type="Self.CustomerFormViewModel" Multiplicity="0..1" />
+          <End Role="MembershipTypes" Type="Self.MembershipType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerFormViewModels">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MembershipTypes">
+              <PropertyRef Name="CustomerFormViewModel_Id1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Customers_dbo_MembershipTypes_MembershipTypeId">
+          <End Role="MembershipTypes" Type="Self.MembershipType" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Customers" Type="Self.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MembershipTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="MembershipTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Rentals_dbo_Customers_CustomersId_Id">
+          <End Role="Customers" Type="Self.Customer" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Rentals" Type="Self.Rental" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Rentals">
+              <PropertyRef Name="Customers_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Movies_dbo_MoviesGenres_MoviesGenreId">
+          <End Role="MoviesGenres" Type="Self.MoviesGenre" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Movies" Type="Model.Movie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MoviesGenres">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Movies">
+              <PropertyRef Name="MoviesGenreId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Rentals_dbo_Movies_MoviesId_Id">
+          <End Role="Movies" Type="Model.Movie" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Rentals" Type="Self.Rental" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Movies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Rentals">
+              <PropertyRef Name="Movies_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_MoviesFormViewModels_dbo_MoviesGenres_MoviesGenreId">
+          <End Role="MoviesGenres" Type="Self.MoviesGenre" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MoviesFormViewModels" Type="Self.MoviesFormViewModel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MoviesGenres">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MoviesFormViewModels">
+              <PropertyRef Name="MoviesGenreId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_MoviesGenres_dbo_MoviesFormViewModels_MoviesFormViewModel_Id">
+          <End Role="MoviesFormViewModels" Type="Self.MoviesFormViewModel" Multiplicity="0..1" />
+          <End Role="MoviesGenres" Type="Self.MoviesGenre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MoviesFormViewModels">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MoviesGenres">
+              <PropertyRef Name="MoviesFormViewModel_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
+          <EntitySet Name="CustomerFormViewModels" EntityType="Self.CustomerFormViewModel" />
+          <EntitySet Name="Customers" EntityType="Self.Customer" />
+          <EntitySet Name="MembershipTypes" EntityType="Self.MembershipType" />
+          <EntitySet Name="Movies1" EntityType="Model.Movie" />
+          <EntitySet Name="MoviesFormViewModels" EntityType="Self.MoviesFormViewModel" />
+          <EntitySet Name="MoviesGenres" EntityType="Self.MoviesGenre" />
+          <EntitySet Name="Rentals" EntityType="Self.Rental" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_CustomerFormViewModels_dbo_MembershipTypes_MembershipTypeId" Association="Self.FK_dbo_CustomerFormViewModels_dbo_MembershipTypes_MembershipTypeId">
+            <End Role="MembershipTypes" EntitySet="MembershipTypes" />
+            <End Role="CustomerFormViewModels" EntitySet="CustomerFormViewModels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_MembershipTypes_dbo_CustomerFormViewModels_CustomerFormViewModel_Id1" Association="Self.FK_dbo_MembershipTypes_dbo_CustomerFormViewModels_CustomerFormViewModel_Id1">
+            <End Role="CustomerFormViewModels" EntitySet="CustomerFormViewModels" />
+            <End Role="MembershipTypes" EntitySet="MembershipTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Customers_dbo_MembershipTypes_MembershipTypeId" Association="Self.FK_dbo_Customers_dbo_MembershipTypes_MembershipTypeId">
+            <End Role="MembershipTypes" EntitySet="MembershipTypes" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Rentals_dbo_Customers_CustomersId_Id" Association="Self.FK_dbo_Rentals_dbo_Customers_CustomersId_Id">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="Rentals" EntitySet="Rentals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Movies_dbo_MoviesGenres_MoviesGenreId" Association="Self.FK_dbo_Movies_dbo_MoviesGenres_MoviesGenreId">
+            <End Role="MoviesGenres" EntitySet="MoviesGenres" />
+            <End Role="Movies" EntitySet="Movies1" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Rentals_dbo_Movies_MoviesId_Id" Association="Self.FK_dbo_Rentals_dbo_Movies_MoviesId_Id">
+            <End Role="Movies" EntitySet="Movies1" />
+            <End Role="Rentals" EntitySet="Rentals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_MoviesFormViewModels_dbo_MoviesGenres_MoviesGenreId" Association="Self.FK_dbo_MoviesFormViewModels_dbo_MoviesGenres_MoviesGenreId">
+            <End Role="MoviesGenres" EntitySet="MoviesGenres" />
+            <End Role="MoviesFormViewModels" EntitySet="MoviesFormViewModels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_MoviesGenres_dbo_MoviesFormViewModels_MoviesFormViewModel_Id" Association="Self.FK_dbo_MoviesGenres_dbo_MoviesFormViewModels_MoviesFormViewModel_Id">
+            <End Role="MoviesFormViewModels" EntitySet="MoviesFormViewModels" />
+            <End Role="MoviesGenres" EntitySet="MoviesGenres" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="Model.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="Model.AspNetRole">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="Model.AspNetUserClaim">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="Model.AspNetUserLogin">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="Model.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomerFormViewModels">
+            <EntityTypeMapping TypeName="Model.CustomerFormViewModel">
+              <MappingFragment StoreEntitySet="CustomerFormViewModels">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="IsSubscribed" ColumnName="IsSubscribed" />
+                <ScalarProperty Name="MembershipTypeId" ColumnName="MembershipTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="Model.Customer">
+              <MappingFragment StoreEntitySet="Customers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="IsSubscribed" ColumnName="IsSubscribed" />
+                <ScalarProperty Name="MembershipTypeId" ColumnName="MembershipTypeId" />
+                <ScalarProperty Name="NumberOfMoviesRented" ColumnName="NumberOfMoviesRented" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MembershipTypes">
+            <EntityTypeMapping TypeName="Model.MembershipType">
+              <MappingFragment StoreEntitySet="MembershipTypes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SignUpFee" ColumnName="SignUpFee" />
+                <ScalarProperty Name="DurationInMonths" ColumnName="DurationInMonths" />
+                <ScalarProperty Name="DiscountRate" ColumnName="DiscountRate" />
+                <ScalarProperty Name="CustomerFormViewModel_Id" ColumnName="CustomerFormViewModel_Id" />
+                <ScalarProperty Name="CustomerFormViewModel_Id1" ColumnName="CustomerFormViewModel_Id1" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Movies1">
+            <EntityTypeMapping TypeName="Model.Movie">
+              <MappingFragment StoreEntitySet="Movies">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+                <ScalarProperty Name="NumberInStock" ColumnName="NumberInStock" />
+                <ScalarProperty Name="MoviesGenreId" ColumnName="MoviesGenreId" />
+                <ScalarProperty Name="NumberAvailable" ColumnName="NumberAvailable" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MoviesFormViewModels">
+            <EntityTypeMapping TypeName="Model.MoviesFormViewModel">
+              <MappingFragment StoreEntitySet="MoviesFormViewModels">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="NumberInStock" ColumnName="NumberInStock" />
+                <ScalarProperty Name="MoviesGenreId" ColumnName="MoviesGenreId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MoviesGenres">
+            <EntityTypeMapping TypeName="Model.MoviesGenre">
+              <MappingFragment StoreEntitySet="MoviesGenres">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Genre" ColumnName="Genre" />
+                <ScalarProperty Name="MoviesFormViewModel_Id" ColumnName="MoviesFormViewModel_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rentals">
+            <EntityTypeMapping TypeName="Model.Rental">
+              <MappingFragment StoreEntitySet="Rentals">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DateRented" ColumnName="DateRented" />
+                <ScalarProperty Name="DateReturned" ColumnName="DateReturned" />
+                <ScalarProperty Name="Customers_Id" ColumnName="Customers_Id" />
+                <ScalarProperty Name="Movies_Id" ColumnName="Movies_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="Model.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

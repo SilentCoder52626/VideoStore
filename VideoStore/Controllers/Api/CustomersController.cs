@@ -21,12 +21,19 @@ namespace VideoStore.Controllers.Api
 
 
         //Get/Api/Customers
-        public IHttpActionResult GetCustomers()
+        public IHttpActionResult GetCustomers(string query = null)
         {
-            var customersDto = context.Customers
-                .Include(c=> c.MembershipType)
+            var customersQuery = context.Customers
+                .Include(c => c.MembershipType);
+
+            if (!String.IsNullOrWhiteSpace(query))
+                customersQuery = customersQuery.Where(c => c.Name.Contains(query));
+
+            var customersDto = customersQuery
                 .ToList()
-                .Select(Mapper.Map<Customers,CustomersDto>);
+                .Select(Mapper.Map<Customers, CustomersDto>);
+
+
             return Ok(customersDto);
         }
         //Get/Api/Customes/id

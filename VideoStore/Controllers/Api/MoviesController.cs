@@ -19,12 +19,18 @@ namespace VideoStore.Controllers.Api
             context = new ApplicationDbContext();
         }
         //Get/Api/Movies
-        public IHttpActionResult GetMovies()
+        public IHttpActionResult GetMovies(string query = null)
         {
-            var moviesDto = context.Movies
-                .Include(m=> m.MoviesGenre)
-                .ToList()
+            var moviesquery = context.Movies
+                .Include(m => m.MoviesGenre)
+                .Where(m => m.NumberAvailable > 0);
+
+            if (!String.IsNullOrWhiteSpace(query))
+                moviesquery = moviesquery.Where(m => m.Name.Contains(query));                
+                
+                var moviesDto= moviesquery.ToList()
                 .Select(Mapper.Map<Movies,MoviesDto>);
+
             return Ok(moviesDto);
         }
         //Get /Api/Movies/Id

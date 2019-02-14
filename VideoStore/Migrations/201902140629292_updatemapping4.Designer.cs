@@ -7,13 +7,13 @@ namespace VideoStore.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class addmigrations : IMigrationMetadata
+    public sealed partial class updatemapping4 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(addmigrations));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(updatemapping4));
         
         string IMigrationMetadata.Id
         {
-            get { return "201901300942592_addmigrations"; }
+            get { return "201902140629292_updatemapping4"; }
         }
         
         string IMigrationMetadata.Source

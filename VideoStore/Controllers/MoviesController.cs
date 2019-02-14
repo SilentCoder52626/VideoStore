@@ -55,6 +55,7 @@ namespace VideoStore.Controllers
             if (movies.Id == 0)
             {
                 movies.DateAdded = DateTime.Now;
+                movies.NumberAvailable = movies.NumberInStock;
                 context.Movies.Add(movies);
             }
             else
@@ -63,6 +64,7 @@ namespace VideoStore.Controllers
                 moviesinDb.Name = movies.Name;
                 moviesinDb.DateCreated = movies.DateCreated;
                 moviesinDb.NumberInStock = movies.NumberInStock;
+                moviesinDb.NumberAvailable = movies.NumberAvailable;
                 moviesinDb.MoviesGenreId = movies.MoviesGenreId;
             }
             context.SaveChanges();

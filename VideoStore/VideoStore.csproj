@@ -48,6 +48,21 @@
     <Reference Include="AutoMapper, Version=8.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <HintPath>..\packages\AutoMapper.8.0.0\lib\net461\AutoMapper.dll</HintPath>
     </Reference>
+    <Reference Include="Glimpse.Ado, Version=1.7.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Glimpse.Ado.1.7.3\lib\net45\Glimpse.Ado.dll</HintPath>
+    </Reference>
+    <Reference Include="Glimpse.AspNet, Version=1.8.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Glimpse.AspNet.1.8.0\lib\net45\Glimpse.AspNet.dll</HintPath>
+    </Reference>
+    <Reference Include="Glimpse.Core, Version=1.8.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Glimpse.1.8.6\lib\net45\Glimpse.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Glimpse.EF6, Version=1.6.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Glimpse.EF6.1.6.5\lib\net45\Glimpse.EF6.dll</HintPath>
+    </Reference>
+    <Reference Include="Glimpse.Mvc5, Version=1.5.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Glimpse.Mvc5.1.5.3\lib\net45\Glimpse.Mvc5.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -55,6 +70,8 @@
     <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
     </Reference>
@@ -183,46 +200,105 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\AspNetRole.cs">
+      <DependentUpon>AutoMapperDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\AspNetUser.cs">
+      <DependentUpon>AutoMapperDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\AspNetUserClaim.cs">
+      <DependentUpon>AutoMapperDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\AspNetUserLogin.cs">
+      <DependentUpon>AutoMapperDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\AutoMapperDbModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AutoMapperDbModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\AutoMapperDbModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AutoMapperDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\AutoMapperDbModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AutoMapperDbModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\Customer.cs">
+      <DependentUpon>AutoMapperDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\CustomerFormViewModel.cs">
+      <DependentUpon>AutoMapperDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\C__MigrationHistory.cs">
+      <DependentUpon>AutoMapperDbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\MappingProfile.cs" />
+    <Compile Include="App_Start\MembershipType.cs">
+      <DependentUpon>AutoMapperDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\Movie.cs">
+      <DependentUpon>AutoMapperDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\MoviesFormViewModel.cs">
+      <DependentUpon>AutoMapperDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\MoviesGenre.cs">
+      <DependentUpon>AutoMapperDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\Rental.cs">
+      <DependentUpon>AutoMapperDbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Api\CustomersController.cs" />
     <Compile Include="Controllers\Api\MoviesController.cs" />
+    <Compile Include="Controllers\Api\NewRentalsController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MoviesController.cs" />
+    <Compile Include="Controllers\RentalsController.cs" />
     <Compile Include="Dtos\CustomersDto.cs" />
     <Compile Include="Dtos\MembershipTypeDto.cs" />
     <Compile Include="Dtos\MoviesDto.cs" />
     <Compile Include="Dtos\MoviesGenreDto.cs" />
+    <Compile Include="Dtos\NewRentalDto.cs" />
+    <Compile Include="GlimpseSecurityPolicy.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201901300934342_InitialModel.cs" />
-    <Compile Include="Migrations\201901300934342_InitialModel.Designer.cs">
-      <DependentUpon>201901300934342_InitialModel.cs</DependentUpon>
+    <Compile Include="Migrations\201902131055296_updatemapping.cs" />
+    <Compile Include="Migrations\201902131055296_updatemapping.Designer.cs">
+      <DependentUpon>201902131055296_updatemapping.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201901300942592_addmigrations.cs" />
-    <Compile Include="Migrations\201901300942592_addmigrations.Designer.cs">
-      <DependentUpon>201901300942592_addmigrations.cs</DependentUpon>
+    <Compile Include="Migrations\201902131116483_updatemapping1.cs" />
+    <Compile Include="Migrations\201902131116483_updatemapping1.Designer.cs">
+      <DependentUpon>201902131116483_updatemapping1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201901310145061_addmigrations1.cs" />
-    <Compile Include="Migrations\201901310145061_addmigrations1.Designer.cs">
-      <DependentUpon>201901310145061_addmigrations1.cs</DependentUpon>
+    <Compile Include="Migrations\201902140524535_updatemapping2.cs" />
+    <Compile Include="Migrations\201902140524535_updatemapping2.Designer.cs">
+      <DependentUpon>201902140524535_updatemapping2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201901310904463_checkout.cs" />
-    <Compile Include="Migrations\201901310904463_checkout.Designer.cs">
-      <DependentUpon>201901310904463_checkout.cs</DependentUpon>
+    <Compile Include="Migrations\201902140531428_updatemapping3.cs" />
+    <Compile Include="Migrations\201902140531428_updatemapping3.Designer.cs">
+      <DependentUpon>201902140531428_updatemapping3.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201902010900245_Seedusers.cs" />
-    <Compile Include="Migrations\201902010900245_Seedusers.Designer.cs">
-      <DependentUpon>201902010900245_Seedusers.cs</DependentUpon>
+    <Compile Include="Migrations\201902140629292_updatemapping4.cs" />
+    <Compile Include="Migrations\201902140629292_updatemapping4.Designer.cs">
+      <DependentUpon>201902140629292_updatemapping4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902140839417_updatemapping5.cs" />
+    <Compile Include="Migrations\201902140839417_updatemapping5.Designer.cs">
+      <DependentUpon>201902140839417_updatemapping5.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -232,6 +308,7 @@
     <Compile Include="Models\Membershiptype.cs" />
     <Compile Include="Models\Movies.cs" />
     <Compile Include="Models\MoviesGenre.cs" />
+    <Compile Include="Models\Rental.cs" />
     <Compile Include="Models\RoleName.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -239,6 +316,16 @@
     <Compile Include="ViewModel\NewMoviesViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Start\AutoMapperDbModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AutoMapperDbModel.edmx</DependentUpon>
+      <LastGenOutput>AutoMapperDbModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_Start\AutoMapperDbModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AutoMapperDbModel.edmx</DependentUpon>
+      <LastGenOutput>AutoMapperDbModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -400,10 +487,15 @@
     <Content Include="Content\DataTables\images\sort_desc.png" />
     <Content Include="Content\DataTables\images\sort_desc_disabled.png" />
     <Content Include="Content\DataTables\swf\flashExport.swf" />
+    <Content Include="Content\toastr.css" />
+    <Content Include="Content\toastr.min.css" />
+    <Content Include="Content\typeahead.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bloodhound.js" />
+    <Content Include="Scripts\bloodhound.min.js" />
     <Content Include="Scripts\bootbox.js" />
     <Content Include="Scripts\bootbox.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -411,6 +503,15 @@
     <Content Include="Content\DataTables\css\semanticui.scss" />
     <Content Include="Content\DataTables\css\mixins.scss" />
     <Content Include="Content\DataTables\css\common.scss" />
+    <Content Include="Content\toastr.scss" />
+    <Content Include="Content\toastr.less" />
+    <EntityDeploy Include="App_Start\AutoMapperDbModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>AutoMapperDbModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="App_Start\AutoMapperDbModel.edmx.diagram">
+      <DependentUpon>AutoMapperDbModel.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.min.js" />
@@ -498,6 +599,12 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\toastr.js" />
+    <Content Include="Scripts\toastr.min.js" />
+    <Content Include="Scripts\typeahead.bundle.js" />
+    <Content Include="Scripts\typeahead.bundle.min.js" />
+    <Content Include="Scripts\typeahead.jquery.js" />
+    <Content Include="Scripts\typeahead.jquery.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -538,6 +645,9 @@
     <Content Include="Views\Customers\List.cshtml" />
     <Content Include="Views\Movies\ReadOnlyList.cshtml" />
     <Content Include="Views\Customers\ReadOnlyList.cshtml" />
+    <Content Include="Views\Rentals\List.cshtml" />
+    <Content Include="Views\Customers\Details.cshtml" />
+    <Content Include="Views\Rentals\ReadOnly.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -556,20 +666,26 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201901300934342_InitialModel.resx">
-      <DependentUpon>201901300934342_InitialModel.cs</DependentUpon>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201902131055296_updatemapping.resx">
+      <DependentUpon>201902131055296_updatemapping.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901300942592_addmigrations.resx">
-      <DependentUpon>201901300942592_addmigrations.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201902131116483_updatemapping1.resx">
+      <DependentUpon>201902131116483_updatemapping1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901310145061_addmigrations1.resx">
-      <DependentUpon>201901310145061_addmigrations1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201902140524535_updatemapping2.resx">
+      <DependentUpon>201902140524535_updatemapping2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901310904463_checkout.resx">
-      <DependentUpon>201901310904463_checkout.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201902140531428_updatemapping3.resx">
+      <DependentUpon>201902140531428_updatemapping3.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201902010900245_Seedusers.resx">
-      <DependentUpon>201902010900245_Seedusers.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201902140629292_updatemapping4.resx">
+      <DependentUpon>201902140629292_updatemapping4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902140839417_updatemapping5.resx">
+      <DependentUpon>201902140839417_updatemapping5.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

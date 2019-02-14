@@ -22,10 +22,15 @@ namespace VideoStore.Models
         
         public MembershipType MembershipType { get; set; }
 
+        public ICollection<Rental> Rental { get; set; }        
+
         [Display(Name = "Membership Type")]
         public byte MembershipTypeId { get; set; }
 
+        public int? NumberOfMoviesRented { get; set; }
+
         
+
     }
 }
 

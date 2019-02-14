@@ -43,6 +43,8 @@ namespace VideoStore.Models
 
         public System.Data.Entity.DbSet<VideoStore.Models.MoviesGenre> MoviesGenres { get; set; }
 
+        public System.Data.Entity.DbSet<VideoStore.Models.Rental> NewRentals { get; set; }
+
         public System.Data.Entity.DbSet<VideoStore.ViewModel.MoviesFormViewModel> MoviesFormViewModels { get; set; }
     }
 }
